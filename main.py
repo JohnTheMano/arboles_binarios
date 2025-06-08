@@ -1,3 +1,18 @@
+def crear_nodo(patente):
+    return [patente, None, None]
+
+def insertar(raiz, patente):
+    if raiz is None:
+        return crear_nodo(patente)
+    if patente == raiz[0]:
+        print(f"La patente {patente} ya existe!")
+        return raiz
+    elif patente < raiz[0]:
+        raiz[1] = insertar(raiz[1], patente)  # Izquierda
+    else:
+        raiz[2] = insertar(raiz[2], patente)  # Derecha
+    return raiz
+
 #arboles-patentes
 def agregar_patente(raiz,patente):
     if not isinstance (patente, str):
