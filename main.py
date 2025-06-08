@@ -36,6 +36,47 @@ def profundidad(raiz):
         return 0
     return 1 + max(profundidad(raiz[1]), profundidad(raiz[2]))
 
+def recorrido_inorden(raiz):
+    resultado = []
+
+    def recorrido(nodo):
+        if nodo is None:
+            return
+        recorrido(nodo[1])       # recorrer izquierda
+        resultado.append(nodo[0]) # visitar nodo
+        recorrido(nodo[2])       # recorrer derecha
+
+    recorrido(raiz)
+    return resultado
+
+
+def recorrido_preorden(raiz):
+    resultado = []
+
+    def recorrido(nodo):
+        if nodo is None:
+            return
+        resultado.append(nodo[0]) # visitar nodo
+        recorrido(nodo[1])       # recorrer izquierda
+        recorrido(nodo[2])       # recorrer derecha
+
+    recorrido(raiz)
+    return resultado
+
+
+
+def recorrido_postorden(raiz):
+    resultado = []
+
+    def recorrido(nodo):
+        if nodo is None:
+            return
+        recorrido(nodo[1])       # recorrer izquierda
+        recorrido(nodo[2])       # recorrer derecha
+        resultado.append(nodo[0]) # visitar nodo
+
+    recorrido(raiz)
+    return resultado
 
 def main():
     raiz = None
