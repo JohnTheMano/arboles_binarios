@@ -35,3 +35,25 @@ def profundidad(raiz):
     if raiz is None:
         return 0
     return 1 + max(profundidad(raiz[1]), profundidad(raiz[2]))
+
+
+def main():
+    raiz = None
+    print("Ingresá patentes (formato Tradicional o Mercosur). Escribí 'exit' para terminar.")
+
+    while True:
+        patente = input("Patente: ").strip()
+        if patente.lower() == "exit":
+            break
+        raiz = agregar_patente(raiz, patente)
+
+    print("\nÁrbol binario de búsqueda:\n")
+    mostrar_arbol(raiz)
+
+    print("\nProfundidad total del árbol:", profundidad(raiz))
+
+    print("\nRecorrido Inorden:", recorrido_inorden(raiz))
+    print("Recorrido Preorden:", recorrido_preorden(raiz))
+    print("Recorrido Postorden:", recorrido_postorden(raiz))
+
+main()
