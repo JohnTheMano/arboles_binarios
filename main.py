@@ -88,6 +88,18 @@ def recorrido_postorden(raiz):
     recorrido(raiz)
     return resultado
 
+# Busca una patente en el árbol binario de búsqueda
+def buscar_patente(raiz, patente):
+    if raiz is None:
+        return False  # No se encontró
+    if patente == raiz[0]:
+        return True  # Se encontró
+    elif patente < raiz[0]:
+        return buscar_patente(raiz[1], patente)  # Buscar en la izquierda
+    else:
+        return buscar_patente(raiz[2], patente)  # Buscar en la derecha
+
+
 # Función principal que muestra el menú y maneja las opciones
 def main():
     raiz = None  # El árbol empieza vacío
@@ -99,7 +111,8 @@ def main():
         print("4. Recorrido INORDEN")
         print("5. Recorrido PREORDEN")
         print("6. Recorrido POSTORDEN")
-        print("7. Salir")
+        print("7. Buscar patente")
+        print("8. Salir")
 
         opcion = input("Elegí una opción: ").strip()
 
@@ -132,10 +145,19 @@ def main():
         elif opcion == "6":
             print("Recorrido POSTORDEN:", recorrido_postorden(raiz))  # Muestra recorrido postorden
             input("\nPresioná Enter para volver al menú...")
-
+        
         elif opcion == "7":
+            patente = input("Ingresá la patente a buscar: ").strip().upper()
+            if buscar_patente(raiz, patente):
+                print(f"La patente {patente} SÍ está en el árbol.")
+            else:
+                print(f"La patente {patente} NO se encuentra en el árbol.")
+            input("\nPresioná Enter para volver al menú...")
+
+        elif opcion == "8":
             print("Programa finalizado.")  # Finaliza el programa
             break
+        
 
         else:
             print("Opción no válida. Intentá de nuevo.")  # Opción incorrecta
