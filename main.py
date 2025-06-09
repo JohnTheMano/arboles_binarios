@@ -147,7 +147,7 @@ def main():
             input("\nPresioná Enter para volver al menú...")
         
         elif opcion == "7":
-            patente = input("Ingresá la patente a buscar: ").strip().upper()
+            patente = input("Ingresá la patente a buscar: ").strip().upper()  # Busca si la existencia de la patente
             if buscar_patente(raiz, patente):
                 print(f"La patente {patente} SÍ está en el árbol.")
             else:
